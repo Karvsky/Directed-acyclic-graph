@@ -1,2 +1,4 @@
 from acyclic_graph import *
-print(generator(8))
+from graph_by_member import *
+#print(generator(5))
+print(uzytkownik(5))
