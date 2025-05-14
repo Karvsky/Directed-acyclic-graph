@@ -1,15 +1,4 @@
-def providing_graph():
-    n = 0
-    while n < 1:
-        try:
-            n = int(input("Podaj ilosc wierzcholkow: "))
-            if n < 1:
-                print("Liczba wierzcholkow musi byc wieksza od 0")
-                n = 0
-        except ValueError:
-            print("Niepoprawna wartosc, podaj liczbe calkowita")
-            n = 0
-
+def providing_graph(n):
     matrix = [[0] * n for _ in range(n)]
 
     for i in range(n):
@@ -52,5 +41,5 @@ def providing_graph():
         print(' '.join(f"{val:3d}" for val in matrix[i]))
         
     return matrix
-providing_graph()
+
 
