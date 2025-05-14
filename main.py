@@ -10,7 +10,7 @@ while (answer != "wygenerowac" and answer != "wpisac"):
         print("Podales niedozwolona wartosc")
 n = int(input("Podaj liczbe wierzcholkow grafu: "))
 if answer == 'wygenerowac':
-    saturation = float(input("Podaj nasycenie: \n"))
+    saturation = float(input("Podaj nasycenie: "))
     graph = generate(n, saturation)
     print(graph)
 print(width(graph, n))
