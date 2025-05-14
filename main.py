@@ -1,5 +1,6 @@
 from acyclic_graph import *
 from width_search import *
+from tarjan_algorithm import *
 
 answer = ''
 graph = []
@@ -13,6 +14,10 @@ if answer == 'wygenerowac':
     saturation = float(input("Podaj nasycenie: "))
     graph = generate(n, saturation)
     print(graph)
-print(width(graph, n))
+answer2 = input("Jakim algorytmem chcialbys posortowac graf: \n-Kahna\n-Tarjana\n")
+if (answer2 == 'Tarjana'):
+    posortowane = Tarjan(graph, n)
+    print(posortowane)
+
 
 
