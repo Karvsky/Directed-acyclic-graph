@@ -37,9 +37,6 @@ def providing_graph(n):
             matrix[i][num] = 1
             matrix[num][i] = -1
 
-    for i in range(n):
-        print(' '.join(f"{val:3d}" for val in matrix[i]))
-        
     return matrix
 
 

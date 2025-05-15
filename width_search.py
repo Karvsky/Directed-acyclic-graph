@@ -8,7 +8,7 @@ def width(graph, n):
     if answer == 'find':
         a = -2
         b = -2
-        while (a < 0 or a + 1 > n) or (b < 0 or b + 1 > n):
+        while (a - 1 < 0 or a - 1 > n) or (b - 1 < 0 or b - 1 > n):
             try:
                 a = int(input("Podaj pierwszy wierzcholek z ktorego ma wychodzic krawedz: "))
                 b = int(input("Podaj drugi wierzcholek: "))
@@ -18,7 +18,7 @@ def width(graph, n):
                 a = -2
                 b = -2
                 print("Niepoprawna wartosc, podaj liczbe calkowita")
-        if 0 <= a < n and 0 <= b < n and graph[a][b] == 1:
+        if graph[a - 1][b - 1] == 1:
             print(f"True: edge ({a},{b}) exists in the Graph!")
         else:
             print(f"False: edge ({a},{b}) does not exist in the Graph!")
@@ -44,7 +44,6 @@ def width(graph, n):
                         visited[i] = True
                         queue.append(i)
 
-        print("inline:", " ".join(map(str, result)))
         return result
 
     else:
