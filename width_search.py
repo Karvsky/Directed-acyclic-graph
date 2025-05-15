@@ -1,33 +1,44 @@
 import random
 
 def width(graph, n):
-    pom1 = 0
+    print(graph)
+    print(n)
     answer = input("Ktora operacje wybierasz: \n-search\n-find\n")
-    if (answer == 'find'):
-        answer = 'find'
+
+    if answer == 'find':
         a = int(input("Podaj pierwszy wierzcholek z ktorego ma wychodzic krawedz: "))
         b = int(input("Podaj drugi wierzcholek: "))
-    elif (answer == 'search'):
-        answer = 'search'
-    visited = [False]*n
-    queue = []
-    #start = random.randint(0, n - 1)
-    start = 0
-    visited[start] = True
-    queue.append(start)
-    while (queue != []):
-       current = queue.pop(0)
-       print(current)
-       for i in range(n):
-           if (graph[current][i] == 1 and visited[i] == False):
-               if (answer =='find' and current == a and i == b):
-                   pom1 = 1
-               visited[i] = True
-               queue.append(i)
-    if answer == 'find':
-        if pom1 == 1:
-            print("Edge", a, "and", b, "exist")
-        elif pom1 == 0:
-            print("Edge", a, "and", b, "not exist")
+        if 0 <= a < n and 0 <= b < n and graph[a][b] == 1:
+            print(f"True: edge ({a},{b}) exists in the Graph!")
+        else:
+            print(f"False: edge ({a},{b}) does not exist in the Graph!")
+        return
+
     elif answer == 'search':
-        return visited
+        visited = [False] * n
+        result = []
+
+        for start_vertex in range(n):
+            if visited[start_vertex]:
+                continue
+
+            queue = [start_vertex]
+            visited[start_vertex] = True
+
+            while queue:
+                current = queue.pop(0)
+                result.append(current)
+
+                for i in range(n):
+                    if graph[current][i] == 1 and not visited[i]:
+                        visited[i] = True
+                        queue.append(i)
+
+        print("inline:", " ".join(map(str, result)))
+        return result
+
+    else:
+        print("Niepoprawna operacja. Wybierz 'search' lub 'find'.")
+        return None
+
+    

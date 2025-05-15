@@ -14,6 +14,9 @@ if answer == 'wygenerowac':
     saturation = float(input("Podaj nasycenie: "))
     graph = generate(n, saturation)
     print(graph)
+graph = [[0, 0, 0, 0], [0, 0, 1, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
+n = 4
+#print(width(graph, n))
 answer2 = input("Jakim algorytmem chcialbys posortowac graf: \n-Kahna\n-Tarjana\n")
 if (answer2 == 'Tarjana'):
     posortowane = Tarjan(graph, n)
