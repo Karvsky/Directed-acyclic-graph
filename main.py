@@ -21,25 +21,44 @@ while n < 1:
     except ValueError:
         n = 0
         print("Niepoprawna wartosc, podaj liczbe calkowita")
-
+saturation = 101
 if answer == 'wygenerowac':
-    saturation = float(input("Podaj nasycenie: "))
+    while saturation < 0 or saturation > 100:
+        try:
+            saturation = float(input("Podaj nasycenie: "))
+            if saturation < 0 or saturation > 100:
+                print("Nasycenie musi byc wartoscia pomiedzy 0 a 100")
+                saturation = 101
+        except ValueError:
+            saturation = 101
+            print("Niepoprawna wartosc, podaj liczbe calkowita")
     graph = generate(n, saturation)
-    print(graph)
-<<<<<<< HEAD
-graph = [[0, 0, 0, 0], [0, 0, 1, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
-n = 4
-#print(width(graph, n))
-=======
-
 elif answer == 'wpisac':
     graph = providing_graph(n)
 
->>>>>>> 3fa539db716732bf9f6dc4a0e6eb8ccb89ecc033
-answer2 = input("Jakim algorytmem chcialbys posortowac graf: \n-Kahna\n-Tarjana\n")
-if (answer2 == 'Tarjana'):
-    posortowane = Tarjan(graph, n)
-    print(posortowane)
+while answer != 'Stop':
+    answer = input("Jaka operacje chcialbys zrobic na grafie:\n-wpisz Print jesli wypisac graf\n-wpisz Breath jeśli chcesz uzyc metody przeszukiwania wszerz\n-wpisz Depth uzyc metody przeszukiwania w glab\n-wpisz Kahna jesli sortowanie metoda Kahna\n-wpisz Tarjana jesli sortowanie metoda Tarjana\n-wpisz Stop jesli chcesz zakonczyc\n")
+    if (answer != 'Stop' and answer != 'Print' and answer != 'Breath' and answer != 'Depth' and answer != 'Kahna' and answer != 'Tarjana'):
+        answer = input("Podales niepoprawna wartosc. Napisz jeszcze raz: ")
+    elif (answer == 'Breath'):
+        print(width(graph, n))
+    elif (answer == 'Depth'):
+        print('esssa')
+    elif (answer == 'Kahna'):
+        print('naajak byczku')
+    elif (answer == 'Tarjana'):
+        print(Tarjan(graph, n))
+    elif(answer == 'Print'):
+        print('elo elo 320 mistrz mistrz kolejorz')
+print(""" 
+      _______
+   .'         '.
+  /   O     O   \\
+ |      ^        |
+ |    \\___/      |
+  \\             /
+   '._________. '
+      """)
 
 
 
