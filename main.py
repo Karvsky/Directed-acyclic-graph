@@ -2,6 +2,7 @@ from acyclic_graph import *
 from width_search import *
 from tarjan_algorithm import *
 from user_provided_graph import *
+from change import *
 
 answer = ''
 graph = []
@@ -38,9 +39,7 @@ elif answer == 'wpisac':
 
 while answer != 'Stop':
     answer = input("Jaka operacje chcialbys zrobic na grafie:\n-wpisz Print jesli wypisac graf\n-wpisz Breath jeśli chcesz uzyc metody przeszukiwania wszerz\n-wpisz Depth uzyc metody przeszukiwania w glab\n-wpisz Kahna jesli sortowanie metoda Kahna\n-wpisz Tarjana jesli sortowanie metoda Tarjana\n-wpisz Stop jesli chcesz zakonczyc\n")
-    if (answer != 'Stop' and answer != 'Print' and answer != 'Breath' and answer != 'Depth' and answer != 'Kahna' and answer != 'Tarjana'):
-        answer = input("Podales niepoprawna wartosc. Napisz jeszcze raz: ")
-    elif (answer == 'Breath'):
+    if (answer == 'Breath'):
         print(width(graph, n))
     elif (answer == 'Depth'):
         print('esssa')
@@ -49,7 +48,9 @@ while answer != 'Stop':
     elif (answer == 'Tarjana'):
         print(Tarjan(graph, n))
     elif(answer == 'Print'):
-        print('elo elo 320 mistrz mistrz kolejorz')
+        print(Print(graph, n))
+    elif (answer != 'Stop' and answer != 'Print' and answer != 'Breath' and answer != 'Depth' and answer != 'Kahna' and answer != 'Tarjana'):
+        print("Podales niepoprawna wartosc. Napisz jeszcze raz")
 print(""" 
       _______
    .'         '.
