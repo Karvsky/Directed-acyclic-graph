@@ -18,7 +18,7 @@ def generate(nodes, saturation):
             adjacency_matrix[i][j] = 1
             adjacency_matrix[j][i] = -1
             edges_added += 1
-    os.system('cls')
+    os.system('cls' if os.name=='nt' else 'clear')
     return adjacency_matrix
 
 

@@ -11,7 +11,7 @@ def Print(graph, n):
             answer = input()
         pom1 += 1
     if answer == 'matrix':
-        os.system('cls')
+        os.system('cls' if os.name=='nt' else 'clear')
         col_width = max(len(str(n)), len(str(-1))) + 1
         print(' ' * (col_width + 2) + '|', end='')
         for j in range(n):
@@ -27,7 +27,7 @@ def Print(graph, n):
                 print(f' {graph[i][j]:^{col_width}} |', end='')
             print()
     elif (answer == 'list'):
-        os.system('cls')
+        os.system('cls' if os.name=='nt' else 'clear')
         for i in range(n):
             print(i+1, end="")
             for j in range(n):
@@ -36,5 +36,5 @@ def Print(graph, n):
                 print(f'{j + 1}', end="")
             print("\n")
     else:
-        os.system('cls')
+        os.system('cls' if os.name=='nt' else 'clear')
         print(graph)

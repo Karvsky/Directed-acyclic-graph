@@ -24,7 +24,7 @@ def width(graph, n):
     answer = ''
     while (answer != 'find' and answer != 'search'):
         answer = input("Ktora operacje wybierasz: \n-search\n-find\n")
-    os.system('cls')
+    os.system('cls' if os.name=='nt' else 'clear')
     if answer == 'find':
         find(graph, n)
 
@@ -54,6 +54,6 @@ def width(graph, n):
 
     else:
         print("Niepoprawna operacja. Wybierz 'search' lub 'find'.")
-        return 
+        return
 
-    
+

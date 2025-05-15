@@ -9,13 +9,13 @@ import os
 
 answer = ''
 graph = []
-os.system('cls')
+os.system('cls' if os.name=='nt' else 'clear')
 print("Witaj w programie!!\n")
 
 while (answer != "wygenerowac" and answer != "wpisac"):
-    answer = input("Wybierz odpowiednia opcje:\n-wpisz 'wygenerowac' jesli chcesz wygenerowac spojny acykliczny graf o nasyceniu rownym 50%\n-wpisz 'wpisac' jesli chcesz samemu podac jak wyglada graf\n")
+    answer = input("Wybierz odpowiednia opcje:\n-wpisz 'wygenerowac' jesli chcesz wygenerowac spojny acykliczny graf\n-wpisz 'wpisac' jesli chcesz samemu podac jak wyglada graf\n")
     if (answer != 'wygenerowac' and answer != 'wpisac'): print("Podales niedozwolona wartosc")
-os.system('cls')    
+os.system('cls' if os.name=='nt' else 'clear')    
 n = 0
 while n < 1:
     try:
@@ -44,19 +44,19 @@ elif answer == 'wpisac':
 while answer != 'stop':
     answer = input("\nJaka operacje chcialbys zrobic na grafie:\n-wpisz 'print' jesli wypisac graf\n-wpisz 'breath' jeśli chcesz uzyc metody przeszukiwania wszerz\n-wpisz 'depth' uzyc metody przeszukiwania w glab\n-wpisz 'kahn' jesli sortowanie metoda Kahna\n-wpisz 'tarjan' jesli sortowanie metoda Tarjana\n-wpisz 'stop' jesli chcesz zakonczyc\n")
     if (answer == 'breath'):
-        os.system('cls')
+        os.system('cls' if os.name=='nt' else 'clear')
         print(width(graph, n))
     elif (answer == 'depth'):
-        os.system('cls')
+        os.system('cls' if os.name=='nt' else 'clear')
         print(depth_search(graph, n))
     elif (answer == 'kahn'):
-        os.system('cls')
+        os.system('cls' if os.name=='nt' else 'clear')
         print(kahn(graph, n))
     elif (answer == 'tarjan'):
-        os.system('cls')
+        os.system('cls' if os.name=='nt' else 'clear')
         Tarjan(graph, n)
     elif(answer == 'print'):
-        os.system('cls')
+        os.system('cls' if os.name=='nt' else 'clear')
         Print(graph, n)
     elif (answer != 'stop' and answer != 'print' and answer != 'breath' and answer != 'depth' and answer != 'kahn' and answer != 'tarjan'):
         print("Podales niepoprawna wartosc. Napisz jeszcze raz")

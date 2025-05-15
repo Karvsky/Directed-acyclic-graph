@@ -5,7 +5,7 @@ def depth_search(graph, n):
     answer = ''
     while answer not in ('find', 'search'):
         answer = input("Ktora operacje wybierasz: \n-search\n-find\n")
-    os.system('cls')
+    os.system('cls' if os.name=='nt' else 'clear')
     if answer == 'find':
         return find(graph, n)
     elif answer == 'search':
@@ -27,4 +27,4 @@ def depth_search(graph, n):
         return result
     else:
         print("Niepoprawna operacja. Wybierz 'search' lub 'find'.")
-        return 
+        return

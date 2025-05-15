@@ -37,7 +37,7 @@ def providing_graph(n):
             num -= 1
             matrix[i][num] = 1
             matrix[num][i] = -1
-    os.system('cls')
+    os.system('cls' if os.name=='nt' else 'clear')
     return matrix
 
 
