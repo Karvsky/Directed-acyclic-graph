@@ -42,7 +42,7 @@ while answer != 'Stop':
     if (answer == 'Breath'):
         print(width(graph, n))
     elif (answer == 'Depth'):
-        print('esssa')
+        print('jeden jest mistrz polski-Lech')
     elif (answer == 'Kahna'):
         print('naajak byczku')
     elif (answer == 'Tarjana'):
