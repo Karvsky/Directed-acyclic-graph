@@ -1,13 +1,23 @@
 import random
 
 def width(graph, n):
-    print(graph)
-    print(n)
-    answer = input("Ktora operacje wybierasz: \n-search\n-find\n")
+    answer = ''
+    while (answer != 'find' and answer != 'search'):
+        answer = input("Ktora operacje wybierasz: \n-search\n-find\n")
 
     if answer == 'find':
-        a = int(input("Podaj pierwszy wierzcholek z ktorego ma wychodzic krawedz: "))
-        b = int(input("Podaj drugi wierzcholek: "))
+        a = -2
+        b = -2
+        while (a < 0 or a + 1 > n) or (b < 0 or b + 1 > n):
+            try:
+                a = int(input("Podaj pierwszy wierzcholek z ktorego ma wychodzic krawedz: "))
+                b = int(input("Podaj drugi wierzcholek: "))
+                if (a < 0 or a + 1 > n) or (b < 0 or b + 1 > n):
+                    print("Podaj ponownie wierzcholki")
+            except ValueError:
+                a = -2
+                b = -2
+                print("Niepoprawna wartosc, podaj liczbe calkowita")
         if 0 <= a < n and 0 <= b < n and graph[a][b] == 1:
             print(f"True: edge ({a},{b}) exists in the Graph!")
         else:
