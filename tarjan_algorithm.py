@@ -15,7 +15,7 @@ def Tarjan(adj_matrix, n):
                 visit(next_node)
         
         status[node] = 2
-        L.append(node)
+        L.append(node + 1)
     
     for node in range(n):
         if status[node] == 0:
