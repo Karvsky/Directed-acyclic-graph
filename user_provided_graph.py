@@ -1,3 +1,4 @@
+import os
 def providing_graph(n):
     matrix = [[0] * n for _ in range(n)]
 
@@ -36,7 +37,7 @@ def providing_graph(n):
             num -= 1
             matrix[i][num] = 1
             matrix[num][i] = -1
-
+    os.system('cls')
     return matrix
 
 

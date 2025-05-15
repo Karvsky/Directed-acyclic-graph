@@ -1,17 +1,21 @@
 from acyclic_graph import *
 from width_search import *
+from depth_search import *
 from tarjan_algorithm import *
 from user_provided_graph import *
 from change import *
+from kahn_algorithm import *
+import os
 
 answer = ''
 graph = []
+os.system('cls')
 print("Witaj w programie!!\n")
 
 while (answer != "wygenerowac" and answer != "wpisac"):
     answer = input("Wybierz odpowiednia opcje:\n-wpisz 'wygenerowac' jesli chcesz wygenerowac spojny acykliczny graf o nasyceniu rownym 50%\n-wpisz 'wpisac' jesli chcesz samemu podac jak wyglada graf\n")
     if (answer != 'wygenerowac' and answer != 'wpisac'): print("Podales niedozwolona wartosc")
-    
+os.system('cls')    
 n = 0
 while n < 1:
     try:
@@ -37,19 +41,24 @@ if answer == 'wygenerowac':
 elif answer == 'wpisac':
     graph = providing_graph(n)
 
-while answer != 'Stop':
-    answer = input("Jaka operacje chcialbys zrobic na grafie:\n-wpisz Print jesli wypisac graf\n-wpisz Breath jeśli chcesz uzyc metody przeszukiwania wszerz\n-wpisz Depth uzyc metody przeszukiwania w glab\n-wpisz Kahna jesli sortowanie metoda Kahna\n-wpisz Tarjana jesli sortowanie metoda Tarjana\n-wpisz Stop jesli chcesz zakonczyc\n")
-    if (answer == 'Breath'):
+while answer != 'stop':
+    answer = input("\nJaka operacje chcialbys zrobic na grafie:\n-wpisz 'print' jesli wypisac graf\n-wpisz 'breath' jeśli chcesz uzyc metody przeszukiwania wszerz\n-wpisz 'depth' uzyc metody przeszukiwania w glab\n-wpisz 'kahn' jesli sortowanie metoda Kahna\n-wpisz 'tarjan' jesli sortowanie metoda Tarjana\n-wpisz 'stop' jesli chcesz zakonczyc\n")
+    if (answer == 'breath'):
+        os.system('cls')
         print(width(graph, n))
-    elif (answer == 'Depth'):
-        print('jeden jest mistrz polski-Lech')
-    elif (answer == 'Kahna'):
-        print('naajak byczku')
-    elif (answer == 'Tarjana'):
-        print(Tarjan(graph, n))
-    elif(answer == 'Print'):
-        print(Print(graph, n))
-    elif (answer != 'Stop' and answer != 'Print' and answer != 'Breath' and answer != 'Depth' and answer != 'Kahna' and answer != 'Tarjana'):
+    elif (answer == 'depth'):
+        os.system('cls')
+        print(depth_search(graph, n))
+    elif (answer == 'kahn'):
+        os.system('cls')
+        print(kahn(graph, n))
+    elif (answer == 'tarjan'):
+        os.system('cls')
+        Tarjan(graph, n)
+    elif(answer == 'print'):
+        os.system('cls')
+        Print(graph, n)
+    elif (answer != 'stop' and answer != 'print' and answer != 'breath' and answer != 'depth' and answer != 'kahn' and answer != 'tarjan'):
         print("Podales niepoprawna wartosc. Napisz jeszcze raz")
 print(""" 
       _______

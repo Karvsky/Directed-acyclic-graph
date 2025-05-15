@@ -22,4 +22,5 @@ def Tarjan(adj_matrix, n):
             visit(node)
     
     print (L[::-1])
+    return
 

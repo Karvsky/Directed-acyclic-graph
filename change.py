@@ -1,3 +1,5 @@
+import os
+
 def Print(graph, n):
     answer = ''
     pom1 = 0
@@ -9,23 +11,30 @@ def Print(graph, n):
             answer = input()
         pom1 += 1
     if answer == 'matrix':
-        width = len(str(n)) + 1
-        print('   | ', end='')
-        for i in range(n):
-            print(f'{i + 1:>{width}}', end=' ')
+        os.system('cls')
+        col_width = max(len(str(n)), len(str(-1))) + 1
+        print(' ' * (col_width + 2) + '|', end='')
+        for j in range(n):
+            print(f' {j + 1:^{col_width}} |', end='')
         print()
-        print('---+', end='')
-        for i in range(n):
-            print('-' * width, end='')
+        print('-' * (col_width + 2) + '+', end='')
+        for j in range(n):
+            print('-' * (col_width + 2) + '+', end='')
         print()
         for i in range(n):
-            print(f'{i + 1:<{width}}| ', end='')
+            print(f' {i + 1:^{col_width}} |', end='')
             for j in range(n):
-                print(f'{graph[i][j]:>{width}}', end=' ')
+                print(f' {graph[i][j]:^{col_width}} |', end='')
             print()
-
-
     elif (answer == 'list'):
-        print()
+        os.system('cls')
+        for i in range(n):
+            print(i+1, end="")
+            for j in range(n):
+                if graph[i][j] != 1: continue
+                print("->", end="")
+                print(f'{j + 1}', end="")
+            print("\n")
     else:
+        os.system('cls')
         print(graph)
