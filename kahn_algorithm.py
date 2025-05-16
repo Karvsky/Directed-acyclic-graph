@@ -1,24 +1,20 @@
 def kahn(graph, n):
+    in_degree = [sum(1 for u in range(n) if graph[u][v] == 1) for v in range(n)]
 
-    in_degree = [0] * n
-    for u in range(n):
-        for v in range(n):
-            if graph[u][v] == 1:
-                in_degree[v] += 1
+    S = [i for i in range(n) if in_degree[i] == 0]
+    L = []
 
-    queue = [i for i in range(n) if in_degree[i] == 0]
-    order = []
+    while S:
+        u = S.pop(0)
+        L.append(u + 1)
+        for m in range(n):
+            if graph[u][m] == 1:
+                graph[u][m] = 0
+                in_degree[m] -= 1
+                if in_degree[m] == 0:
+                    S.append(m)
 
-    while queue:
-        u = queue.pop(0)
-        order.append(u + 1)
-        for v in range(n):
-            if graph[u][v] == 1:
-                in_degree[v] -= 1
-                if in_degree[v] == 0:
-                    queue.append(v)
-
-    if len(order) != n:
+    if any(in_degree[v] > 0 for v in range(n)):
         print("Graf zawiera cykl - sortowanie topologiczne niemożliwe")
         return
-    return order
+    return L
