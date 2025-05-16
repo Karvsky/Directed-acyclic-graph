@@ -37,4 +37,11 @@ def Print(graph, n):
             print("\n")
     else:
         os.system('cls' if os.name=='nt' else 'clear')
-        print(graph)
+        result = []
+        for i in range(n):
+            temp = []
+            for j in range(n):
+                if graph[i][j] == 1: temp.append(j+1)
+            if i == n - 1: break
+            result.append(temp)
+        print(result)
