@@ -42,7 +42,7 @@ elif answer == 'wpisac':
     graph = providing_graph(n)
 
 while answer != 'stop':
-    answer = input("\nJaka operacje chcialbys zrobic na grafie:\n-wpisz 'print' jesli wypisac graf\n-wpisz 'breath' jeśli chcesz uzyc metody przeszukiwania wszerz\n-wpisz 'depth' uzyc metody przeszukiwania w glab\n-wpisz 'kahn' jesli sortowanie metoda Kahna\n-wpisz 'tarjan' jesli sortowanie metoda Tarjana\n-wpisz 'stop' jesli chcesz zakonczyc\n")
+    answer = input("\nJaka operacje chcialbys zrobic na grafie:\n-wpisz 'print' jesli wypisac graf\n-wpisz 'find' jesli chcesz znalezc krawedz\n-wpisz 'breath' jeśli chcesz uzyc metody przeszukiwania wszerz\n-wpisz 'depth' uzyc metody przeszukiwania w glab\n-wpisz 'kahn' jesli sortowanie metoda Kahna\n-wpisz 'tarjan' jesli sortowanie metoda Tarjana\n-wpisz 'stop' jesli chcesz zakonczyc\n")
     if (answer == 'breath'):
         os.system('cls' if os.name=='nt' else 'clear')
         print(width(graph, n))
@@ -58,7 +58,10 @@ while answer != 'stop':
     elif(answer == 'print'):
         os.system('cls' if os.name=='nt' else 'clear')
         Print(graph, n)
-    elif (answer != 'stop' and answer != 'print' and answer != 'breath' and answer != 'depth' and answer != 'kahn' and answer != 'tarjan'):
+    elif(answer == 'find'):
+        os.system('cls' if os.name=='nt' else 'clear')
+        find(graph, n)
+    else:
         print("Podales niepoprawna wartosc. Napisz jeszcze raz")
 print(""" 
       _______
