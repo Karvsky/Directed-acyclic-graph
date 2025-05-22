@@ -1,24 +1,34 @@
 import random, os
 
-def find(graph, n):
-    a = -2
-    b = -2
-    while (a - 1 < 0 or a - 1 > n) or (b - 1 < 0 or b - 1 > n):
+def find(graph, n, rep):
+    """Check if an edge exists based on user-chosen representation rep: 'matrix', 'list', 'table'."""
+    a = b = -1
+    # prompt for vertices a and b
+    while True:
         try:
-            a = int(input("Podaj pierwszy wierzcholek z ktorego ma wychodzic krawedz: "))
-            b = int(input("Podaj drugi wierzcholek: "))
-            if (a < 0 or a + 1 > n) or (b < 0 or b + 1 > n):
-                print("Podaj ponownie wierzcholki")
+            a = int(input("Podaj pierwszy wierzcholek (source): "))
+            b = int(input("Podaj drugi wierzcholek (target): "))
+            if a < 1 or a > n or b < 1 or b > n:
+                print("Podaj ponownie wierzcholki (poza zakresem)")
+                continue
+            break
         except ValueError:
-            a = -2
-            b = -2
             print("Niepoprawna wartosc, podaj liczbe calkowita")
-    if graph[a - 1][b - 1] == 1:
+    exists = False
+    if rep == 'matrix':
+        exists = (graph[a-1][b-1] == 1)
+    elif rep == 'list':
+        # graph is adjacency list: list of neighbors (1-based ints)
+        exists = (b in graph[a-1])
+    elif rep == 'table':
+        # graph is edge list of (u,v) tuples
+        exists = ((a, b) in graph)
+    # report result
+    if exists:
         print(f"True: krawedz ({a},{b}) istnieje w grafie!")
-        return True
     else:
         print(f"False: krawedz ({a},{b}) nie istnieje w grafie!")
-        return False
+    return exists
 
 def width(graph, n):
     answer = ''
