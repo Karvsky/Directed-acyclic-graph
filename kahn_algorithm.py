@@ -1,6 +1,4 @@
 def kahn(graph, n, rep):
-    """Kahn's algorithm for topological sorting using rep: 'matrix','list','table'. Returns 1-based order."""
-    # construct adjacency list 0-based and compute in-degrees
     in_degree = [0] * n
     adj = [[] for _ in range(n)]
     if rep == 'matrix':
@@ -14,11 +12,10 @@ def kahn(graph, n, rep):
             for v in neighbors:
                 adj[u].append(v-1)
                 in_degree[v-1] += 1
-    else:  # table
+    else: 
         for u, v in graph:
             adj[u-1].append(v-1)
             in_degree[v-1] += 1
-    # initialize zero in-degree queue
     S = [i for i in range(n) if in_degree[i] == 0]
     L = []
     while S:

@@ -1,9 +1,7 @@
 import random, os
 
 def find(graph, n, rep):
-    """Check if an edge exists based on user-chosen representation rep: 'matrix', 'list', 'table'."""
     a = b = -1
-    # prompt for vertices a and b
     while True:
         try:
             a = int(input("Podaj pierwszy wierzcholek (source): "))
@@ -18,12 +16,9 @@ def find(graph, n, rep):
     if rep == 'matrix':
         exists = (graph[a-1][b-1] == 1)
     elif rep == 'list':
-        # graph is adjacency list: list of neighbors (1-based ints)
         exists = (b in graph[a-1])
     elif rep == 'table':
-        # graph is edge list of (u,v) tuples
         exists = ((a, b) in graph)
-    # report result
     if exists:
         print(f"True: krawedz ({a},{b}) istnieje w grafie!")
     else:

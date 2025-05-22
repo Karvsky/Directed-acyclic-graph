@@ -1,6 +1,5 @@
 import random, os
 
-
 def generate(nodes, saturation):
     max_edges = nodes * (nodes - 1) // 2
     edge_count = int(max_edges * (saturation / 100))

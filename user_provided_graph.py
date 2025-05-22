@@ -12,13 +12,11 @@ def providing_graph(n):
             if len(tokens) > n:
                 print("Za dużo wierzcholkow")
                 continue
-            # próba konwersji do liczb
             try:
                 nums_input = [int(tok) for tok in tokens]
             except ValueError:
                 print("Podaj ponownie wierzcholki")
                 continue
-            # sprawdzenie powielenia
             if len(nums_input) != len(set(nums_input)):
                 print("Podaj ponownie wierzcholki - powielony wierzchołek")
                 continue
