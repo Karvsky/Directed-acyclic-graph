@@ -12,13 +12,14 @@ def find(graph, n, rep):
             break
         except ValueError:
             print("Niepoprawna wartosc, podaj liczbe calkowita")
-    exists = False
-    if rep == 'matrix':
-        exists = (graph[a-1][b-1] == 1)
-    elif rep == 'list':
-        exists = (b in graph[a-1])
-    elif rep == 'table':
-        exists = ((a, b) in graph)
+    def get_neighbors(u):
+        if rep == 'matrix':
+            return [v for v in range(n) if graph[u][v] == 1]
+        elif rep == 'list':
+            return [v-1 for v in graph[u]]
+        else:
+            return [dst-1 for (src, dst) in graph if src-1 == u]
+    exists = (b-1) in get_neighbors(a-1)
     if exists:
         print(f"True: krawedz ({a},{b}) istnieje w grafie!")
     else:

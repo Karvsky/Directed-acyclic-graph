@@ -1,12 +1,11 @@
 def Tarjan(graph, n, rep):
-    if rep == 'matrix':
-        adj_list = [[v for v in range(n) if graph[u][v] == 1] for u in range(n)]
-    elif rep == 'list':
-        adj_list = [[v-1 for v in neighbors] for neighbors in graph]
-    else:  
-        adj_list = [[] for _ in range(n)]
-        for u,v in graph:
-            adj_list[u-1].append(v-1)
+    def get_neighbors(u):
+        if rep == 'matrix':
+            return [v for v in range(n) if graph[u][v] == 1]
+        elif rep == 'list':
+            return [v-1 for v in graph[u]]
+        else:
+            return [dst-1 for (src, dst) in graph if src-1 == u]
     status = [0] * n
     result = []
     def dfs(u):
@@ -15,7 +14,7 @@ def Tarjan(graph, n, rep):
         if status[u] == 2:
             return
         status[u] = 1
-        for v in adj_list[u]:
+        for v in get_neighbors(u):
             if status[v] != 2:
                 dfs(v)
         status[u] = 2

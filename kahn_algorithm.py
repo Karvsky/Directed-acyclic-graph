@@ -1,27 +1,22 @@
 def kahn(graph, n, rep):
+    def get_neighbors(u):
+        if rep == 'matrix':
+            return [v for v in range(n) if graph[u][v] == 1]
+        elif rep == 'list':
+            return [v-1 for v in graph[u]]
+        else:
+            return [dst-1 for (src, dst) in graph if src-1 == u]
     in_degree = [0] * n
-    adj = [[] for _ in range(n)]
-    if rep == 'matrix':
-        for u in range(n):
-            for v in range(n):
-                if graph[u][v] == 1:
-                    adj[u].append(v)
-                    in_degree[v] += 1
-    elif rep == 'list':
-        for u, neighbors in enumerate(graph):
-            for v in neighbors:
-                adj[u].append(v-1)
-                in_degree[v-1] += 1
-    else: 
-        for u, v in graph:
-            adj[u-1].append(v-1)
-            in_degree[v-1] += 1
+    # compute in-degrees dynamically
+    for u in range(n):
+        for v in get_neighbors(u):
+            in_degree[v] += 1
     S = [i for i in range(n) if in_degree[i] == 0]
     L = []
     while S:
         u = S.pop(0)
         L.append(u+1)
-        for v in adj[u]:
+        for v in get_neighbors(u):
             in_degree[v] -= 1
             if in_degree[v] == 0:
                 S.append(v)
