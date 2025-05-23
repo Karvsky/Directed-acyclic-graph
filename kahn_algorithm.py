@@ -7,7 +7,6 @@ def kahn(graph, n, rep):
         else:
             return [dst-1 for (src, dst) in graph if src-1 == u]
     in_degree = [0] * n
-    # compute in-degrees dynamically
     for u in range(n):
         for v in get_neighbors(u):
             in_degree[v] += 1
